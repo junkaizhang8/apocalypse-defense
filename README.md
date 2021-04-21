@@ -36,6 +36,3 @@ files are downloaded on the user's computer.
 
 ## Known Errors
 No known errors.
-
-## Additional Files
-All necessary png files
