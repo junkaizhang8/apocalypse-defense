@@ -32,15 +32,15 @@ class Zombie(Image):
         
     def update(self):
         global total_coins, zombies_alive, current_shield_energy
-        if self.sprite_image == "abnormal zombie.png":
+        if self.sprite_image == "./images/abnormal zombie.png":
             self.x_change -= 0.01
-        elif self.sprite_image == "healing zombie.png":
+        elif self.sprite_image == "./images/healing zombie.png":
             if self.current_health < self.health_points:
                 self.current_health += 0.25
-        elif self.sprite_image == "demon zombie.png":
+        elif self.sprite_image == "./images/demon zombie.png":
             if self.current_health <= (self.health_points * 0.75):
                 self.x_change = -5
-                self.image = pygame.image.load("enraged demon zombie.png")             
+                self.image = pygame.image.load("./images/enraged demon zombie.png")             
         else:
             pass
         self.x_value = self.x_value + self.x_change
@@ -131,7 +131,7 @@ def spriteLocation(sprite_image, x_value, y_value):
 def returnToMenu(x_value, y_value, width, height):
     button_colour = (150, 75, 0)
     button_press_colour = (200, 100, 0)    
-    return_button = Button("return to menu.png", x_value, y_value, width,\
+    return_button = Button("./images/return to menu.png", x_value, y_value, width,\
                            height, button_colour, button_press_colour)
     return_to_menu = return_button.display_button("return")
     return return_to_menu
@@ -143,7 +143,7 @@ def energyInputInterface():
     startup(background)            
     input_box = pygame.Rect(300, 280, 400, 40)
     pygame.draw.rect(screen, (255, 255, 255), input_box)
-    request_font = pygame.font.Font("freesansbold.ttf", 20)
+    request_font = pygame.font.SysFont("freesansbold.ttf", 30)
     
     input_request = request_font.render("Please enter the amount of energy you \
 want for the base shield.", True, (255, 255, 255))
@@ -228,13 +228,13 @@ def buttonConditionCheck(button_type):
         if page_number == 6:
             return None
         else:
-            image = "next page.png"
+            image = "./images/next page.png"
     elif button_type == "previous page":
         page_number -= 1
         if page_number == 1:
             return None
         else:
-            image = "previous page.png"
+            image = "./images/previous page.png"
     elif button_type == "menu":
         page_number = 1
         rules_flag = False
@@ -487,7 +487,7 @@ def winScreen():
     global screen_width, gameplay_flag
     background = (0, 128, 0)
     startup(background)
-    win_message = pygame.image.load("win.png")
+    win_message = pygame.image.load("./images/win.png")
     win_message_width = win_message.get_width()
     spriteLocation(win_message, screen_width / 2 -\
                    win_message_width /2, 200)
@@ -514,7 +514,7 @@ def loseScreen():
     global screen_width, gameplay_flag
     background = (128, 0, 0)
     startup(background)
-    lose_message = pygame.image.load("lose.png")
+    lose_message = pygame.image.load("./images/lose.png")
     lose_message_width = lose_message.get_width()
     spriteLocation(lose_message, screen_width / 2 -\
                    lose_message_width / 2, 200)
@@ -533,32 +533,32 @@ def loseScreen():
 
 pygame.init()
 
-character_image = pygame.image.load("character.png")
+character_image = pygame.image.load("./images/character.png")
 
-shield_image = pygame.image.load("shield.png")
+shield_image = pygame.image.load("./images/shield.png")
 
-coin_image = pygame.image.load("coin.png")
+coin_image = pygame.image.load("./images/coin.png")
 
-ability_image = "bullet storm.png"
-heal_image = "heal.png"
+ability_image = "./images/bullet storm.png"
+heal_image = "./images/heal.png"
 
 zombie_group = pygame.sprite.Group()
 bullet_group = pygame.sprite.Group()
 
-game_rules = {1: "page 1.png", 2: "page 2.png", 3: "page 3.png",\
-              4: "page 4.png", 5: "page 5.png", 6: "page 6.png"}
+game_rules = {1: "./images/page 1.png", 2: "./images/page 2.png", 3: "./images/page 3.png",\
+              4: "./images/page 4.png", 5: "./images/page 5.png", 6: "./images/page 6.png"}
 
-bullet_types = {1: ["bullet 1.png", 10, 500], 2: ["bullet 2.png", 15, 1100],\
-                3: ["bullet 3.png", 30, 2500], 4: ["bullet 4.png", 50, ""]}
+bullet_types = {1: ["./images/bullet 1.png", 10, 500], 2: ["./images/bullet 2.png", 15, 1100],\
+                3: ["./images/bullet 3.png", 30, 2500], 4: ["./images/bullet 4.png", 50, ""]}
 
-zombie_types = {"Basic": ["basic zombie.png", 40, -1, 20],\
-                "Hungry": ["hungry zombie.png", 30, -2, 25],\
-                "Crawling": ["crawling zombie.png", 80, -0.7, 25],\
-                "Abnormal": ["abnormal zombie.png", 90, -0.1, 35],\
-                "Lightning": ["lightning zombie.png", 50, -4.5, 45],\
-                "Shield": ["shield zombie.png", 210, -0.6, 45],\
-                "Healing": ["healing zombie.png", 140, -0.75, 50],\
-                "Demon": ["demon zombie.png", 250, -0.55, 65]}
+zombie_types = {"Basic": ["./images/basic zombie.png", 40, -1, 20],\
+                "Hungry": ["./images/hungry zombie.png", 30, -2, 25],\
+                "Crawling": ["./images/crawling zombie.png", 80, -0.7, 25],\
+                "Abnormal": ["./images/abnormal zombie.png", 90, -0.1, 35],\
+                "Lightning": ["./images/lightning zombie.png", 50, -4.5, 45],\
+                "Shield": ["./images/shield zombie.png", 210, -0.6, 45],\
+                "Healing": ["./images/healing zombie.png", 140, -0.75, 50],\
+                "Demon": ["./images/demon zombie.png", 250, -0.55, 65]}
 # This dictionary stores the attributes (image, health, x_change, coin_drop) of
 # each individual zombie. Inside each key, a list is used to store all the
 # attributes of that zombie.
@@ -585,7 +585,7 @@ cement_lines = {1: 200, 2: 270, 3: 340, 4: 410}
 ability_cooldown = 25000
 heal_cooldown = 50000
 
-font = pygame.font.Font("freesansbold.ttf", 20)
+font = pygame.font.SysFont("freesansbold.ttf", 28)
 
 clock = pygame.time.Clock()
 
@@ -671,18 +671,18 @@ while main_flag:
         menu_button_colour = (150, 75, 0)
         menu_button_press_colour = (200, 100, 0)
         
-        title_image = pygame.image.load("title.png")
+        title_image = pygame.image.load("./images/title.png")
         title_width = title_image.get_width()
         spriteLocation(title_image, screen_width / 2 - title_width / 2, 50)
-        play_button = Button("play.png", 350, 200, 300, 100,\
+        play_button = Button("./images/play.png", 350, 200, 300, 100,\
                              menu_button_colour, menu_button_press_colour)
         play_button.display_button("play")
         
-        rules_button = Button("rules.png", 350, 325, 300, 100,\
+        rules_button = Button("./images/rules.png", 350, 325, 300, 100,\
                               menu_button_colour, menu_button_press_colour)
         rules_button.display_button("rules")
         
-        exit_button = Button("exit.png", 350, 450, 300, 100,\
+        exit_button = Button("./images/exit.png", 350, 450, 300, 100,\
                              menu_button_colour, menu_button_press_colour)
         exit_button.display_button("exit")
         pygame.display.update()
@@ -705,23 +705,23 @@ while main_flag:
             # with the parameters being current_page, 0, and 0 in order to
             # display on the screen.
             if page_number < 6:
-                next_page_button = Button("next page.png", 730, 520, 240, 60,\
+                next_page_button = Button("./images/next page.png", 730, 520, 240, 60,\
                                           menu_button_colour,\
                                           menu_button_press_colour)
                 next_page_button.display_button("next page")
             if page_number > 1:
-                previous_page_button = Button("previous page.png", 30, 520,\
+                previous_page_button = Button("./images/previous page.png", 30, 520,\
                                               240, 60, menu_button_colour,\
                                               menu_button_press_colour)
                 previous_page_button.display_button("previous page")
-            menu_button = Button("main menu.png", 380, 520, 240, 60,\
+            menu_button = Button("./images/main menu.png", 380, 520, 240, 60,\
                                  menu_button_colour, menu_button_press_colour)
             menu_button.display_button("menu")
             
             pygame.display.update()
             
     while shield_input_flag:
-        input_font = pygame.font.Font("freesansbold.ttf", 40)
+        input_font = pygame.font.SysFont("freesansbold.ttf", 50)
         shield_energy = ""
         character_counter = 0
         inputting = True
